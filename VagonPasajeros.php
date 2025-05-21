@@ -35,8 +35,26 @@ class VagonPasajeros extends Vagon {
         $this->peso_promedio_pasajeros = $pesoPromedioPasajeros;
     }
 
-    public function 
+    public function incorporarPasajeroVagon($cant_pasajeros) {
+        $valor = false;
+        $maximo_de_pasajeros = $this->getCant_max_pasajeros();
+        $cant_pasajeros_actual = $this->getCant_pasajeros_actual();
+        if ($cant_pasajeros <= $maximo_de_pasajeros) {
+            if(($cant_pasajeros_actual + $cant_pasajeros) <= $cant_max_pasajeros) {
+            $this->setCant_pasajeros_actual($cant_pasajeros_actual + $cant_pasajeros);
+            $valor = true;
+            }
+        }
+    }
 
-    
+    public function calcularPesoVagon() {
+        $cant_pasajeros = $this->getCant_pasajeros_actual();
+        $peso_promedio_pasajeros = $this->getPeso_promedio_pasajeros();
+        $peso_vacio = parent :: getPeso_del_vagon_vacio();
+
+        $pesoActual = ($cant_pasajeros * $peso_promedio_pasajeros) + $peso_vacio;
+
+        return $pesoActual;
+    }
 }
 ?>

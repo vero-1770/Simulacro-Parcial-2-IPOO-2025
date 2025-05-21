@@ -2,13 +2,13 @@
 class VagonCarga extends Vagon {
     private $peso_maximo_a_transportar;
     private $peso_carga_actual;
-    private $indice;
+    private $indiceCarga;
 
     public function __construct($anioInstalacion, $largo, $ancho, $pesoVacio, $pesoMaximo, $pesoActual, $indi) {
         parent :: __construct($anioInstalacion, $largo, $ancho, $pesoVacio);
         $this->peso_maximo_a_transportar = $pesoMaximo;
         $this->peso_carga_actual = $pesoActual;
-        $this->indice = $indi;
+        $this->indiceCarga = $indi;
     }
 
     public function getPeso_maximo_a_transportar() {
@@ -19,8 +19,8 @@ class VagonCarga extends Vagon {
         return $this->peso_carga_actual;
     }
 
-    public function getIndice() {
-        return $this->indice;
+    public function getIndiceCarga() {
+        return $this->indiceCarga;
     }
 
     public function setPeso_maximo_a_transportar($peso_maximo) {
@@ -31,8 +31,20 @@ class VagonCarga extends Vagon {
         $this->peso_carga_actual = $peso_actual;
     }
 
-    public function setIndice($ind) {
-        $this->indice = $ind;
+    public function setIndiceCarga($ind) {
+        $this->indiceCarga = $ind;
+    }
+
+    public function incorporarCargaVagon($cant_carga) {
+        $valor = false;
+        $peso_maximo = $this->getPeso_maximo_a_transportar();
+        $peso_actual = $this->getPeso_carga_actual();
+        if ($cant_carga <= $peso_maximo) {
+            if(($cant_carga + $peso_actual) <= $peso_maximo) {
+            $this->setPeso_carga_actual($cant_carga + $peso_actual);
+            $valor = true;
+            }
+        }
     }
 
 }
