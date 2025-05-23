@@ -50,7 +50,7 @@ class VagonPasajeros extends Vagon {
         $maximo_de_pasajeros = $this->getCant_max_pasajeros();
         $cant_pasajeros_actual = $this->getCant_pasajeros_actual();
         if ($cant_pasajeros <= $maximo_de_pasajeros) {
-            if(($cant_pasajeros_actual + $cant_pasajeros) <= $cant_max_pasajeros) {
+            if(($cant_pasajeros_actual + $cant_pasajeros) <= $maximo_de_pasajeros) {
             $this->setCant_pasajeros_actual($cant_pasajeros_actual + $cant_pasajeros);
             $nuevo_peso_actual = $this->calcularPesoVagon();
             parent :: setPeso_actual($nuevo_peso_actual);

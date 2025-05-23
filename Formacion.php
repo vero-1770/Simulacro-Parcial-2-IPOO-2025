@@ -143,16 +143,16 @@ class Formacion {
     }
 
     public function __toString() {
-        $coleccopn = $this->getColeccion_vagones();
+        $coleccion = $this->getColeccion_vagones();
         $vagones = "";
 
-        foreach ($vagones as $vagon) {
+        foreach ($coleccion as $vagon) {
             $vagones .= $vagon;
         }
 
         $cadena = ("\n-----------FORMACION-----------" . 
                     "\n" . $this->getRef_objLocomotora() . 
-                    "\n-----------VAGONES-----------" .
+                    "\n\n-----------VAGONES-----------" .
                     "\n" . $vagones . 
                     "\nMaximo de vagones posibles: " . $this->getMaximo_vagones());
         return $cadena;

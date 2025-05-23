@@ -4,7 +4,7 @@ class VagonCarga extends Vagon {
     private $peso_carga_actual;
     private $indiceCarga;
 
-    public function __construct($anioInstalacion, $largo, $ancho, $pesoVacio, $pesoMaximo, $pesoActual, $indi) {
+    public function __construct($anioInstalacion, $largo, $ancho, $pesoVacio, $pesoMaximo, $pesoActual) {
         parent :: __construct($anioInstalacion, $largo, $ancho, $pesoVacio);
         $this->peso_maximo_a_transportar = $pesoMaximo;
         $this->peso_carga_actual = $pesoActual;
@@ -60,8 +60,9 @@ class VagonCarga extends Vagon {
         return $valor;
     }
 
-    public function _toString() {
-        $cadena = ("\n-----------VAGON DE CARGA-----------" . 
+    public function __toString() {
+        $cadena = ( "\n" . parent :: __toString() . "\n" .
+                    "\n-----------VAGON DE CARGA-----------" . 
                     "\nPeso maximo que puede transportar: " . $this->getPeso_maximo_a_transportar() . 
                     "\nPeso de la carga actual: " . $this->getPeso_carga_actual() . 
                     "\nIndice de carga: " . $this->getIndiceCarga() . 

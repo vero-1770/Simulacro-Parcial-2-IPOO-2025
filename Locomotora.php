@@ -3,7 +3,7 @@ class Locomotora {
     private $peso_locomotora;
     private $velocidad_maxima;
 
-    public function __construct($peso, $velocidadMax) {
+    public function __construct($peso, $velocidad_maxima) {
         $this->peso_locomotora = $peso;
         $this->velocidad_maxima = $velocidad_maxima;
     }
@@ -26,8 +26,8 @@ class Locomotora {
 
     public function __toString() {
         $cadena = ("\n-----------LOCOMOTORA-----------" . 
-                    "\nPeso: " . $this->getPeso_locomotora() . 
-                    "\nVelocidad: " . $this->getVelocidad_maxima());
+                    "\nPeso: " . $this->getPeso_locomotora() . " toneladas" . 
+                    "\nVelocidad: " . $this->getVelocidad_maxima() . " km/h");
         return $cadena;
     }
 }
