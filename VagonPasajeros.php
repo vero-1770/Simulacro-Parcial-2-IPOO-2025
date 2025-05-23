@@ -35,18 +35,6 @@ class VagonPasajeros extends Vagon {
         $this->peso_promedio_pasajeros = $pesoPromedioPasajeros;
     }
 
-    public function incorporarPasajeroVagon($cant_pasajeros) {
-        $valor = false;
-        $maximo_de_pasajeros = $this->getCant_max_pasajeros();
-        $cant_pasajeros_actual = $this->getCant_pasajeros_actual();
-        if ($cant_pasajeros <= $maximo_de_pasajeros) {
-            if(($cant_pasajeros_actual + $cant_pasajeros) <= $cant_max_pasajeros) {
-            $this->setCant_pasajeros_actual($cant_pasajeros_actual + $cant_pasajeros);
-            $valor = true;
-            }
-        }
-    }
-
     public function calcularPesoVagon() {
         $cant_pasajeros = $this->getCant_pasajeros_actual();
         $peso_promedio_pasajeros = $this->getPeso_promedio_pasajeros();
@@ -55,6 +43,31 @@ class VagonPasajeros extends Vagon {
         $pesoActual = ($cant_pasajeros * $peso_promedio_pasajeros) + $peso_vacio;
 
         return $pesoActual;
+    }
+
+    public function incorporarPasajeroVagon($cant_pasajeros) {
+        $valor = false;
+        $maximo_de_pasajeros = $this->getCant_max_pasajeros();
+        $cant_pasajeros_actual = $this->getCant_pasajeros_actual();
+        if ($cant_pasajeros <= $maximo_de_pasajeros) {
+            if(($cant_pasajeros_actual + $cant_pasajeros) <= $cant_max_pasajeros) {
+            $this->setCant_pasajeros_actual($cant_pasajeros_actual + $cant_pasajeros);
+            $nuevo_peso_actual = $this->calcularPesoVagon();
+            parent :: setPeso_actual($nuevo_peso_actual);
+            $valor = true;
+            }
+        }
+        return $valor;
+    }
+
+    public function __toString() {
+        $cadena = ("\n" . parent :: __toString() . "\n" .
+                    "\n-----------VAGON DE PASAJEROS-----------" .
+                    "\nCantidad maxima de pasajeros soportada: " . $this->getCant_max_pasajeros() .
+                    "\nCantidad de pasajeros actual: " . $this->getCant_pasajeros_actual() .
+                    "\nPeso promedio pasajeros: " . $this->getPeso_promedio_pasajeros() .
+                    "\nPeso actual del vagon: " . $this->calcularPesoVagon());
+        return $cadena;
     }
 }
 ?>

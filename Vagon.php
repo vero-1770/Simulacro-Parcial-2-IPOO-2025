@@ -54,21 +54,20 @@ class Vagon {
         $this->peso_actual = $peso;
     }
 
+    public function calcularPesoVagon() {
+        $pesoActual = $this->getPeso_del_vagon_vacio();
+        $this->setPeso_actual($peso_actual);
+        return $peso_actual;
+    }
+
     public function __toString() {
         $cadena = ("\n-----------DATOS DEL VAGON-----------" .
                     "\nAño de instalación: " . $this->getAnio_instalacion_vagon() .
                     "\nLargo: " . $this->getLargo_vagon() . 
                     "\nAncho: " . $this->getAncho_vagon() . 
                     "\nPeso del vagon vacio: " . $this->getPeso_del_vagon_vacio() .
-                    "\nPeso actual: " . $this->getPeso_actual());
+                    "\nPeso actual del vagon: " . $this->getPeso_actual());
         return $cadena;
     }
-
-    public function calcularPesoVagon() {
-        $pesoActual = $this->getPeso_del_vagon_vacio();
-        $this->setPeso_actual($peso_actual);
-        return $peso_actual;
-    }
-   
 }
 ?>
